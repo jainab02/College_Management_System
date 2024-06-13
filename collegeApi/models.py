@@ -7,13 +7,17 @@ class Course(models.Model):
 
     Cid = models.IntegerField(primary_key=True)
     name = models.CharField(max_length = 50)
+    def __str__(self):
+        return self.name
+    
 
 
 class Department(models.Model):
     Did  = models.AutoField(primary_key=True)
     DeptName = models.CharField(max_length = 50)
     course = models.ForeignKey(Course,on_delete = models.CASCADE)
-
+    def __str__(self):
+        return self.DeptName
 
 class Student(models.Model):
     GENDER_CHOICES = (
@@ -34,3 +38,5 @@ class Faculty(models.Model):
     Fid = models.AutoField(primary_key=True)
     faculty_name = models.CharField(max_length = 50)
     department = models.ForeignKey(Department,on_delete = models.CASCADE)
+
+# class Result(models.Model):
